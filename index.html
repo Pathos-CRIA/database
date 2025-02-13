@@ -14,7 +14,7 @@
         if ((!email) || (email == null)) {
           document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
         } else {
-          fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?randomNumber=${randomNumber}&email=${encodeURIComponent(email)}&type=0`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?randomNumber=${randomNumber}&email=${encodeURIComponent(email)}&type=0`, {
           method: 'POST',
           headers: {
             'Referer': window.location.origin, // Add Referer header to verify request origin
@@ -38,7 +38,7 @@
                     document.getElementById('buttons').innerHTML = `<button id="menu-button" onclick="handleMenu(4);" type="submit">MP Traffic Dashboard</button>`
                   } else {
                       document.getElementById("form-body").innerHTML = "Processing your request. This may take a few seconds..."
-                      fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
+                      fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
                         method: 'POST'
                       }).then(response => {
                         if (response.ok) {
@@ -199,7 +199,7 @@ https://example.com/evidence-b" required></textarea><br><br><br>
           localStorage.setItem('randomNumber', randomNumber); // Store it locally
           localStorage.setItem('email', email);
           // Send the email and random number to your endpoint
-          fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?randomNumber=${randomNumber}&type=1&token=${encodeURIComponent(response.credential)}`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?randomNumber=${randomNumber}&type=1&token=${encodeURIComponent(response.credential)}`, {
             method: 'POST',
           }).then(response => {
             if (response.ok) {
@@ -220,7 +220,7 @@ https://example.com/evidence-b" required></textarea><br><br><br>
       function handleType433Form(subtype, query) {
         if (subtype == "view") {
           document.getElementById("type4332-response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(query)}&type=412`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(query)}&type=412`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -239,7 +239,7 @@ https://example.com/evidence-b" required></textarea><br><br><br>
         }
         if (subtype == "edit") {
         document.getElementById("type4332-response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(query)}&type=431`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(query)}&type=431`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -363,7 +363,7 @@ Considering the circumstances and statutory limitations on the punishment for su
         	          return true
                  }
           document.getElementById("type41-response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(lookupInput)}&type=411`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(lookupInput)}&type=411`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -387,7 +387,7 @@ Considering the circumstances and statutory limitations on the punishment for su
           })
                 } else if (lookupType == 412) {
           document.getElementById("type41-response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=412`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=412`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -410,7 +410,7 @@ Considering the circumstances and statutory limitations on the punishment for su
         	          return true
                  }
           document.getElementById("type41-response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(lookupInput)}&type=413`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(lookupInput)}&type=413`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -474,7 +474,7 @@ Considering the circumstances and statutory limitations on the punishment for su
          `, "\r")
          
          document.getElementById("type42-response").innerHTML = "Processing your request. This may take a few seconds..."
-         fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&type=42`, {
+         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&type=42`, {
            method: 'POST'
          }).then(response => {
            if (response.ok) {
@@ -497,7 +497,7 @@ Considering the circumstances and statutory limitations on the punishment for su
         event.preventDefault()
         document.getElementById("type43-response").innerHTML = "Processing your request. This may take a few seconds..."
         var lookupInput = document.getElementById("inputCaseId").value
-          fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=431`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=431`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -654,8 +654,8 @@ Considering the circumstances and statutory limitations on the punishment for su
          var refId = document.getElementById("editingCaseRefId").innerHTML
          
          document.getElementById("type43-response").innerHTML = "Processing your request. This may take a few seconds..."
-         console.log(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`)
-         fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`, {
+         console.log(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`)
+         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`, {
            method: 'POST'
          }).then(response => {
            if (response.ok) {
@@ -677,7 +677,7 @@ Considering the circumstances and statutory limitations on the punishment for su
       }
       if (subtype == 433) {        
          document.getElementById("type433-response").innerHTML = "Processing your request. This may take a few seconds..."
-         fetch(`https://script.google.com/macros/s/AKfycbwxV6p96QiA8dA9zvzzkC4gTtQ3pZcZw308jCKyu95CQeQwy1QfTK7Ll5egYz7kvf7pGg/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&type=433`, {
+         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&type=433`, {
            method: 'POST'
          }).then(response => {
            if (response.ok) {
