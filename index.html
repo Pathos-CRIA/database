@@ -12,7 +12,7 @@
       
       function primary() {      
         if ((!email) || (email == null)) {
-          document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
+          document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="policy.html" target="_blank">here</a>.</span>`;
         } else {
           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?randomNumber=${randomNumber}&email=${encodeURIComponent(email)}&type=0`, {
           method: 'POST',
@@ -60,6 +60,21 @@
         }).catch(error => {
           console.error('Error:', error);
         });
+        }
+      }
+
+      function loadSnippet(elementId, targetId) {
+        var url = "mpsnippets.html"
+        try {
+          fetch(url).then(response => {
+            if (!response.ok) {console.error("Failed to fetch content"); throw new Error("Failed to fetch content"}
+            var text = response.text()
+          })
+
+          let parser = new DOMParser()
+          let content = parser.parseFromString(text, "text/html").getElementById(elementId)
+
+          document.getElementById(targetId).innerHTML = content.innerHTML
         }
       }
       
