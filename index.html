@@ -32,9 +32,9 @@
                   document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-sd.github.io/access-terminal/policy" target="_blank">here</a>.</span>`;
                 } else {
                   document.getElementById('authorization-status').innerHTML = `You are signed in as ${email}. Use the button below to change your account.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-sd.github.io/access-terminal/policy" target="_blank">here</a>.</span>`;
-                  document.getElementById('buttons').innerHTML = `<button id="menu-button" onclick="handleMenu(41);" type="submit">Look-Up</button>
-        <button id="menu-button" onclick="handleMenu(42);" type="submit">Action Submission</button>
-        <button id="menu-button" onclick="handleMenu(43);" type="submit">Action Review</button>`
+                  document.getElementById('buttons').innerHTML = `<button class="styled green" onclick="handleMenu(41);" type="submit">Look-Up</button>
+        <button class="styled green" onclick="handleMenu(42);" type="submit">Action Submission</button>
+        <button class="styled green" onclick="handleMenu(43);" type="submit">Action Review</button>`
                   /*var parameter = window.location.href.split("?")[1]
                   if (parameter == undefined) {
                     document.getElementById('buttons').innerHTML = `<button id="menu-button" onclick="handleMenu(4);" type="submit">MP Traffic Dashboard</button>`
@@ -736,7 +736,14 @@ Considering the circumstances and statutory limitations on the punishment for su
       }      
       /* Style the search button */
       
-      button[type="submit"]:not(#view-edit-button) {
+      button.compact {
+      border: none;
+      color: #fff;
+      font-family: calibri;
+      cursor: pointer;
+      }
+      
+      button.styled {
       border: none;
       border-radius: 10px;
       padding: 5px 10px;
@@ -748,100 +755,60 @@ Considering the circumstances and statutory limitations on the punishment for su
       font-family: calibri;
       cursor: pointer;
       }
-      button[type="submit"]:not(#view-edit-button):hover {
-      background-color: #23527c;
+     
+      button.styled {
+      margin-top: 10px;
       }
-      button[type="submit"]:not(#view-edit-button):active {
-      background-color: #1d3f5b;
+
+      button.smaller {
+      line-height: 20px;
       }
-      button[type="submit"]:not(#view-edit-button):focus {
+      
+      button:focus {
       outline: none;
       }
-      button[type="submit"]:not(#view-edit-button):disabled {
+      button:disabled {
       background-color: #ccc;
       color: #999;
       cursor: not-allowed;
       }
-      button[type="submit"]#menu-button {
-      border: none;
-      border-radius: 10px;
-      padding: 5px 10px;
-      margin-top: 10px;
-      line-height: 30px;
-      background-color: #33b779;
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
-      font-family: calibri;
-      cursor: pointer;
+      
+      button.blue {
+        background-color: #337ab7;
       }
-      button[type="submit"]#menu-button:hover {
+      button.blue:hover {
+        background-color: #23527c;
+      }
+      button.blue:active {
+        background-color: #1d3f5b;
+      }
+
+      button.green {
+      background-color: #33b779;
+      }
+      button.green:hover {
       background-color: #237c52;
       }
-      button[type="submit"]#menu-button:active {
+      button.green:active {
       background-color: #1d5b3f;
       }
-      button[type="submit"]#menu-button:focus {
-      outline: none;
-      }
-      button[type="submit"]#menu-button:disabled {
-      background-color: #ccc;
-      color: #999;
-      cursor: not-allowed;
-      }
-      button[type="submit"]#traffic-button {
-      border: none;
-      border-radius: 10px;
-      padding: 5px 10px;
-      margin-top: 10px;
-      line-height: 20px;
+
+      button.yellow {
       background-color: #73731c;
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
-      font-family: calibri;
-      cursor: pointer;
       }
-      button[type="submit"]#traffic-button:hover {
+      button.yellow:hover {
       background-color: #4d4d12;
       }
-      button[type="submit"]#traffic-button:active {
+      button.yellow:active {
       background-color: #33330c;
       }
-      button[type="submit"]#traffic-button:focus {
-      outline: none;
-      }
-      button[type="submit"]#traffic-button:disabled {
-      background-color: #ccc;
-      color: #999;
-      cursor: not-allowed;
-      }
+      
       hr.rounded {
       border-top: 8px solid #337ab7;
       border-bottom: 1px solid #337ab7;
       border-radius: 5px;
       }
-      button[type="submit"]#view-edit-button {
-      border: none;
-      background-color: #73731c;
-      color: #fff;
-      font-family: calibri;
-      cursor: pointer;
-      }
-      button[type="submit"]#view-edit-button:hover {
-      background-color: #4d4d12;
-      }
-      button[type="submit"]#view-edit-button:active {
-      background-color: #33330c;
-      }
-      button[type="submit"]#view-edit-button:focus {
-      outline: none;
-      }
-      button[type="submit"]#view-edit-button:disabled {
-      background-color: #ccc;
-      color: #999;
-      cursor: not-allowed;
-      }
+
     </style>
   </head>
   <body onload="primary()">
