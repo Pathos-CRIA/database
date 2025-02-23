@@ -65,22 +65,17 @@
 
       function loadSnippet(elementId, targetId) {
         var url = "mpsnippets.html"
-        try {
-          fetch(url).then(response => {
-            if (!response.ok) {
-              console.error("Failed to fetch content");
-              throw new Error("Failed to fetch content");
-            }
-            var text = response.text()
-          })
-
+        fetch(url).then(response => {
+          if (!response.ok) {
+            console.error("Failed to fetch content");
+            throw new Error("Failed to fetch content");
+          }
           let parser = new DOMParser()
-          let content = parser.parseFromString(text, "text/html").getElementById(elementId.toUpperCase())
-
+          let content = parser.parseFromString(response.text(), "text/html").getElementById(elementId.toUpperCase())
           document.getElementById(targetId).innerHTML = content.innerHTML
-        } catch (error) {
+        }).catch(error => {
           console.error("Error loading snippet:", error)
-        }
+        })
       }
       
       function handleMenu(type) {
