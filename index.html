@@ -69,9 +69,12 @@
           if (!response.ok) {
             console.error("Failed to fetch content");
             throw new Error("Failed to fetch content");
+          } else {
+            return response.text()
           }
+        }).then(text => {
           let parser = new DOMParser()
-          let content = parser.parseFromString(response.text(), "text/html").getElementById(elementId.toUpperCase())
+          let content = parser.parseFromString(text, "text/html").getElementById(elementId.toUpperCase())
           document.getElementById(targetId).innerHTML = content.innerHTML
         }).catch(error => {
           console.error("Error loading snippet:", error)
