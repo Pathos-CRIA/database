@@ -65,7 +65,7 @@
 
       function loadSnippet(elementId, targetId) {
         var url = "mpsnippets.html"
-        fetch(url).then(response => {
+        fetch(url, {cache: "no-cache"}).then(response => {
           if (!response.ok) {
             console.error("Failed to fetch content");
             throw new Error("Failed to fetch content");
