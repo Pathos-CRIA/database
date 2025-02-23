@@ -78,7 +78,7 @@
           let content = parser.parseFromString(text, "text/html").getElementById(elementId.toUpperCase())
 
           document.getElementById(targetId).innerHTML = content.innerHTML
-        } catch {
+        } catch (error) {
           console.error("Error loading snippet:", error)
         }
       }
