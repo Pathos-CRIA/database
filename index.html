@@ -365,44 +365,43 @@ Considering the circumstances and statutory limitations on the punishment for su
         }
       }
       
-      function handleType4Form(event, subtype) {
-        if (subtype == 1) {
-                document.getElementById("search-button").disabled = true
+      function lookup(event) {
+         document.getElementById("search-button").disabled = true
          event.preventDefault()
-      
-                var lookupType = document.getElementById("lookupType").value
-                var lookupInput = document.getElementById("inputQuery").value
-      
-                if (lookupType == 411) {
-                        if (!/^[A-Za-z0-9_]{3,21}$/.test(lookupInput)) {
-        	          document.getElementById("type41-response").innerHTML = "The username is invalid."
-        	          document.getElementById("search-button").disabled = false
-        	          return true
-                 }
-          document.getElementById("type41-response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(lookupInput)}&type=411`, {
-            method: 'POST'
-          }).then(response => {
-            if (response.ok) {
-              return response.json()
-            } else {
-              throw new Error ('Failed to fetch response.')
-            }
-          }).then(data => {
-            document.getElementById("type41-response").innerHTML = data.result.replaceAll(/TIMESTAMP:(\d+)/g, (_, unixTimestamp) => {
-      let date = new Date(Number(unixTimestamp));
-      let year = String(date.getFullYear())
-      let month = String(date.getMonth()+1).padStart(2, '0')
-      let day = String(date.getDate()).padStart(2, '0')
-      let hours = String(date.getHours()).padStart(2, '0')
-      let minutes = String(date.getMinutes()).padStart(2, '0')
-      return `${year}/${month}/${day} ${hours}:${minutes}`
-      });
-            document.getElementById("search-button").disabled = false
-          }).catch(error => {
-            console.error("Error:", error)
-          })
-                } else if (lookupType == 412) {
+         var lookupType = document.getElementById("lookupType").value
+         var lookupInput = document.getElementById("inputQuery").value
+
+         if (lookupType == "summary-lu") {
+           if (!/^[A-Za-z0-9_]{3,21}$/.test(lookupInput)) {
+             document.getElementById("response1").innerHTML = "The username is invalid."
+             document.getElementById("search-button").disabled = false
+             return true
+           }
+           
+           document.getElementById("response1").innerHTML = "Processing your request. This may take a few seconds..."
+           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(lookupInput)}&type=411`, {
+             method: 'POST'
+           }).then(response => {
+             if (response.ok) {
+               return response.json()
+             } else {
+               throw new Error ('Failed to fetch response.')
+             }
+           }).then(data => {
+             document.getElementById("response1").innerHTML = data.result.replaceAll(/TIMESTAMP:(\d+)/g, (_, unixTimestamp) => {
+               let date = new Date(Number(unixTimestamp));
+               let year = String(date.getFullYear())
+               let month = String(date.getMonth()+1).padStart(2, '0')
+               let day = String(date.getDate()).padStart(2, '0')
+               let hours = String(date.getHours()).padStart(2, '0')
+               let minutes = String(date.getMinutes()).padStart(2, '0')
+               return `${year}/${month}/${day} ${hours}:${minutes}`
+             });
+             document.getElementById("search-button").disabled = false
+           }).catch(error => {
+             console.error("Error:", error)
+           })
+         } else if (lookupType == 412) {
           document.getElementById("type41-response").innerHTML = "Processing your request. This may take a few seconds..."
           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=412`, {
             method: 'POST'
@@ -454,6 +453,8 @@ Considering the circumstances and statutory limitations on the punishment for su
                         
                 }
         }
+
+      function idk() {
       if (subtype == 2) {
       document.getElementById("search-button").disabled = true
          event.preventDefault()
