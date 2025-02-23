@@ -72,7 +72,7 @@
           })
 
           let parser = new DOMParser()
-          let content = parser.parseFromString(text, "text/html").getElementById(elementId)
+          let content = parser.parseFromString(text, "text/html").getElementById(elementId.toUpperCase())
 
           document.getElementById(targetId).innerHTML = content.innerHTML
         }
