@@ -67,7 +67,10 @@
         var url = "mpsnippets.html"
         try {
           fetch(url).then(response => {
-            if (!response.ok) {console.error("Failed to fetch content"); throw new Error("Failed to fetch content"}
+            if (!response.ok) {
+              console.error("Failed to fetch content");
+              throw new Error("Failed to fetch content");
+            }
             var text = response.text()
           })
 
@@ -75,6 +78,8 @@
           let content = parser.parseFromString(text, "text/html").getElementById(elementId.toUpperCase())
 
           document.getElementById(targetId).innerHTML = content.innerHTML
+        } catch {
+          console.error("Error loading snippet:", error)
         }
       }
       
