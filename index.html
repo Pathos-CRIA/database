@@ -32,7 +32,9 @@
                   document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-sd.github.io/access-terminal/policy" target="_blank">here</a>.</span>`;
                 } else {
                   document.getElementById('authorization-status').innerHTML = `You are signed in as ${email}. Use the button below to change your account.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-sd.github.io/access-terminal/policy" target="_blank">here</a>.</span>`;
-                  document.getElementById('buttons').innerHTML = `<button id="menu-button" onclick="handleMenu(4);" type="submit">MP Traffic Dashboard</button>`
+                  document.getElementById('buttons').innerHTML = `<button id="menu-button" onclick="handleMenu(41);" type="submit">Look-Up</button>
+        <button id="menu-button" onclick="handleMenu(42);" type="submit">Action Submission</button>
+        <button id="menu-button" onclick="handleMenu(43);" type="submit">Action Review</button>`
                   /*var parameter = window.location.href.split("?")[1]
                   if (parameter == undefined) {
                     document.getElementById('buttons').innerHTML = `<button id="menu-button" onclick="handleMenu(4);" type="submit">MP Traffic Dashboard</button>`
@@ -64,9 +66,7 @@
       
       function handleMenu(type) {
         if (type == 4) {
-          document.getElementById('form-body').innerHTML = `                <button id="traffic-button" onclick="handleMenu(41);" type="submit">Look-Up</button>
-        <button id="traffic-button" onclick="handleMenu(42);" type="submit">Action Submission</button>
-        <button id="traffic-button" onclick="handleMenu(43);" type="submit">Action Review</button>`
+          document.getElementById('form-body').innerHTML = `                `
         } else if (type == 41) {
             document.getElementById('form-body').innerHTML = `                <button id="traffic-button" onclick="handleMenu(41);" type="submit">Look-Up</button>
         <button id="traffic-button" onclick="handleMenu(42);" type="submit">Action Submission</button>
