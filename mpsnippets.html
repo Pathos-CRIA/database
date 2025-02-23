@@ -1,0 +1,39 @@
+<div id="EMPTY"></div>
+
+<div id="LOOK-UP">
+  <h3 style="margin-bottom:15px">MP Traffic Dashboard: Look-Up</h3>
+  <form id="lookup-form" style="line-height:10px" onsubmit="lookup(event)">
+    <label for="lookupType">Look-Up Type:</label><br><br>
+    <select id="lookupType" name="lookupType" onchange="loadSnippet('lookupInput', value)" required>
+      <option value="empty"></option>
+      <option value="summary-lu">Summary User Look-Up</option>
+      <option value="case-lu">Case Look-Up by Ref #</option>
+      <option value="user-records">Full User Records</option>
+    </select><br><br><br>
+    <div id="lookupInput"></div>
+  </form>
+  <p id="response1"></p>
+  <p id="response2"></p>
+  <p id="response3"></p>
+</div>
+
+<div id="SUMMARY-LU">
+  <label for="inputQuery">Subject's Username:</label><br><br>
+  <input type="text" id="inputQuery" name="inputQuery" placeholder="Vasek_Stolba" required maxlength="20"><br><br>
+  
+  <button class="styled blue" id="search-button" type="submit">Submit</button>`
+</div>
+
+<div id="CASE-LU">
+  <label for="inputQuery">Reference Number:</label><br><br>
+  <input type="number" id="inputQuery" name="inputQuery" placeholder="321" required min="1" max="999"><br><br>
+
+  <button class="styled blue" id="search-button" type="submit">Submit</button>`
+</div>
+
+<div id="USER-RECORDS">
+  <label for="inputQuery">Subject's Username:</label><br><br>
+  <input type="text" id="inputQuery" name="inputQuery" placeholder="Vasek_Stolba" required maxlength="20"><br><br>
+  
+  <button class="styled blue" id="search-button" type="submit" disabled>Submit</button><span style="font-size:10px"><br>This feature is not functional at this time.</span>`
+</div>
