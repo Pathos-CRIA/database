@@ -572,13 +572,10 @@
            }
          }).then(data => {
            if (data.result == `Case ${refId} was successfully edited in the traffic database.`) {
-             loadSnippet('case-edit', 'dashboard')
+             loadSnippet('case-edit', 'dashboard').then(response => {if (response.ok) {document.getElementById("response").innerHTML = result}})
            } else {
              document.getElementById("search-button").disabled = false
            }
-           return data.result
-         }).then(result => {
-           document.getElementById("response").innerHTML = result
          }).catch(error => {
            console.error("Error:", error)
          })
