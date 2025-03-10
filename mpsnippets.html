@@ -40,7 +40,7 @@
 
 <div id="CASE-SUBMIT">
   <h3 style="margin-bottom:15px">MP Traffic Dashboard: Action Submission</h3>
-  <form id="submit-form" style="line-height:10px" onsubmit="handleType4Form(event, 2)">
+  <form id="submit-form" style="line-height:10px" onsubmit="submit(event)">
     <label for="inputusername">Defendant's Username:</label><br><br>
     <input type="text" id="inputUsername" name="inputUsername" placeholder="Vasek_Stolba" required maxlength="20"><br><br><br>
     
@@ -87,26 +87,27 @@
     
     <label for="evidence">Evidence:<span style="font-size:10px"><br>Include nothing but links. Separate links by line breaks. One line per link.</span></label><br><br>
     <textarea style="height:120px" id="evidence" name="evidence" placeholder="https://example.com/evidence-a
-    https://example.com/evidence-b" required></textarea><br><br><br>
+https://example.com/evidence-b" required></textarea><br><br><br>
     
     <label for="notes">Notes:</label><br><br>
     <textarea style="height:60px" id="notes" name="notes" placeholder="(Optional) The offender was ordered not to drive..."></textarea><br><br>
     
-    <button id="search-button" type="submit">Submit</button>
+    <button id="search-button" class="styled blue" type="submit">Submit</button>
   </form>
   <p id="response"></p>
 </div>
 
 <div id="CASE-EDIT">
   <h3 style="margin-bottom:0px;padding-bottom:0px">MP Traffic Dashboard: Action Review</h3><p style="font-size:10px;margin-top:1px;padding-top:0px;margin-bottom:15px">Select the record you want to edit either by specifying the reference number or opening the List of Pending Cases.</p>
-  <form id="type43-form" style="line-height:10px" onsubmit="handleType4Form(event, 431)">
+  <form id="preedit-form" style="line-height:10px" onsubmit="getInfoForEdit(event)">
     <label for="inputCaseId">Reference Number:</label><br><br>
     <input type="number" id="inputCaseId" name="inputCaseId" placeholder="321" required min="1" max="999"><br><br>
       
     <button id="search-button" type="submit">Select</button>
   </form>
-  <p id="response"><br></p>
-  <button id="traffic-button" onclick="handleType4Form('', 433)" type="submit">List of Pending Cases</button>
-  <p id="list-response"><br></p>
-  <p id="response2"><br></p>
+  <p id="response"></p>
+  <br>
+  <button id="list-button" onclick="handleType4Form('', 433)" type="submit">List of Pending Cases</button>
+  <p id="list-response"></p>
+  <p id="response2"></p>
 </div>
