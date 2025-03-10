@@ -370,9 +370,10 @@
         var notes = document.getElementById("notes").value.replaceAll(`
          `, "\r")
 
-        if (offenseSummary == "")+(evidence == "") {
+        if ((offenseSummary == "")+(evidence == "")) {
           document.getElementById("response").innerHTML = "Offense summary and evidence are required fields."
           document.getElementById("search-button").disabled = false
+          return true
         }
         document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&type=42`, {
@@ -506,55 +507,60 @@
           })
       }
 
-      function idk() {
-      if (subtype == 432) {
-      document.getElementById("search-button").disabled = true
-         event.preventDefault()
-         var i = 0
-         var charges = ""
-         while (i < 18) {
-           var checkbox = document.getElementById("checkbox_" + i)
-           if (checkbox.checked) {
-               if (charges == "") {
-                 charges = checkbox.value
-               } else {
-                 charges += ";" + checkbox.value
-               }
-           }
-           i = i+1
-         }
-         if (charges == "") {
-           document.getElementById("type43-response").innerHTML = "Select at least one charge."
-           document.getElementById("search-button").disabled = false
-           return true
-         }
-         console.log(charges)
+      function submitEdit(event) {
+        document.getElementById("search-button").disabled = true
+        event.preventDefault()
+        var i = 0
+        var charges = ""
+        while (i < 18) {
+          var checkbox = document.getElementById("checkbox_" + i)
+          if (checkbox.checked) {
+            if (charges == "") {
+              charges = checkbox.value
+            } else {
+              charges += ";" + checkbox.value
+            }
+          }
+          i = i+1
+        }
+        if (charges == "") {
+          document.getElementById("response").innerHTML = "Select at least one charge."
+          document.getElementById("search-button").disabled = false
+          return true
+        }
+        console.log(charges)
+        
+        var username = document.getElementById("inputUsername").value
+        if (!/^[A-Za-z0-9_]{3,21}$/.test(username)) {
+          document.getElementById("response").innerHTML = "The username is invalid."
+          document.getElementById("search-button").disabled = false
+          return true
+        }
+        var offenseSummary = document.getElementById("offenseSummary").value.replaceAll(`
+        `, "\r")
+        var evidence = document.getElementById("evidence").value.replaceAll(`
+        `, "\r")
+        var notes = document.getElementById("notes").value.replaceAll(`
+        `, "\r")
+      
+        if (document.getElementById("checkbox_supervisor").checked) {
+          var makeSupervisor = "yes"
+        } else {
+          var makeSupervisor = "no"
+        }
+        var supervisorNotes = document.getElementById("supervisorNotes").value.replaceAll(`
+         `, "\r")
+        var sentence = document.getElementById("sentence").value
+        var sentenceDuration = document.getElementById("sentenceDuration").value
+        var status = document.getElementById("status").value
+        var refId = document.getElementById("editingCaseRefId").innerHTML
+        if ((offenseSummary == "")+(evidence == "")) {
+          document.getElementById("response").innerHTML = "Offense summary, evidence, and supervisor notes are required fields."
+          document.getElementById("search-button").disabled = false
+          return true
+        }
          
-         var username = document.getElementById("inputUsername").value
-         if (!/^[A-Za-z0-9_]{3,21}$/.test(username)) {
-           document.getElementById("type43-response").innerHTML = "The username is invalid."
-           document.getElementById("search-button").disabled = false
-           return true
-         }
-         var offenseSummary = document.getElementById("offenseSummary").value.replaceAll(`
-         `, "\r")
-         var evidence = document.getElementById("evidence").value.replaceAll(`
-         `, "\r")
-         var notes = document.getElementById("notes").value.replaceAll(`
-         `, "\r")
-         if (document.getElementById("checkbox_supervisor").checked) {
-           var makeSupervisor = "yes"
-         } else {
-           var makeSupervisor = "no"
-         }
-         var supervisorNotes = document.getElementById("supervisorNotes").value.replaceAll(`
-         `, "\r")
-         var sentence = document.getElementById("sentence").value
-         var sentenceDuration = document.getElementById("sentenceDuration").value
-         var status = document.getElementById("status").value
-         var refId = document.getElementById("editingCaseRefId").innerHTML
-         
-         document.getElementById("type43-response").innerHTML = "Processing your request. This may take a few seconds..."
+         document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
          console.log(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`)
          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`, {
            method: 'POST'
@@ -576,8 +582,8 @@
            console.error("Error:", error)
          })
       }
-      if (subtype == 433) {        
-         document.getElementById("type433-response").innerHTML = "Processing your request. This may take a few seconds..."
+      function listPendingActions {        
+         document.getElementById("list-response").innerHTML = "Processing your request. This may take a few seconds..."
          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&type=433`, {
            method: 'POST'
          }).then(response => {
@@ -587,12 +593,11 @@
              throw new Error ('Failed to fetch response.')
            }
          }).then(data => {
-           document.getElementById("type433-response").innerHTML = data.result
+           document.getElementById("list-response").innerHTML = data.result
            
          }).catch(error => {
            console.error("Error:", error)
          })
-      }
       }
     </script>
     <style>
