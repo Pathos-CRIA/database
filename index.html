@@ -369,7 +369,11 @@
          `, "\r")
         var notes = document.getElementById("notes").value.replaceAll(`
          `, "\r")
-         
+
+        if (offenseSummary == "")+(evidence == "") {
+          document.getElementById("response").innerHTML = "Offense summary and evidence are required fields."
+          document.getElementById("search-button").disabled = false
+        }
         document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&type=42`, {
           method: 'POST'
