@@ -334,7 +334,7 @@
         }
       }
       
-      function submit() {
+      function submit(event) {
         document.getElementById("search-button").disabled = true
         event.preventDefault()
         var i = 0
@@ -390,11 +390,10 @@
         })
       }
       
-      function idk() {
-      if (subtype == 431) {
+      function getInfoForEdit(event) {
         document.getElementById("search-button").disabled = true
         event.preventDefault()
-        document.getElementById("type43-response").innerHTML = "Processing your request. This may take a few seconds..."
+        document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
         var lookupInput = document.getElementById("inputCaseId").value
           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=431`, {
             method: 'POST'
@@ -407,14 +406,14 @@
             }
           }).then(data => {
             if (data.message != "Success!") {
-              document.getElementById('type43-response').innerHTML = data.message
+              document.getElementById('response').innerHTML = data.message
               document.getElementById("search-button").disabled = false
               return true
             } else {
               console.log(data.charges.includes("Reckless Driving (a)"))
-              document.getElementById('form-body').innerHTML = `            <h3 style="margin-bottom:0px;padding-bottom:0px">MP Traffic Dashboard: Action Review</h3><p style="font-size:10px;margin-top:1px;padding-top:0px;margin-bottom:15px">Case <span id="editingCaseRefId">${data.refId}</span>, submitted by ${data.submittedBy}</p>
+              document.getElementById('dashboard').innerHTML = `            <h3 style="margin-bottom:0px;padding-bottom:0px">MP Traffic Dashboard: Action Review</h3><p style="font-size:10px;margin-top:1px;padding-top:0px;margin-bottom:15px">Case <span id="editingCaseRefId">${data.refId}</span>, submitted by ${data.submittedBy}</p>
       
-      <form id="type43-form" style="line-height:10px" onsubmit="handleType4Form(event, 432)">
+      <form id="edit-form" style="line-height:10px" onsubmit="edit(event)">
       
       <label for="inputusername">Defendant's Username:</label><br><br>
       <input type="text" id="inputUsername" name="inputUsername" placeholder="Vasek_Stolba" required maxlength="20" value="${data.defendantUser}"><br><br><br>
@@ -494,14 +493,16 @@
       <option value="Invalid" ${data.status[2]}>Invalid</option>
       </select><br><br>
       
-      <button id="search-button" type="submit">Edit</button>
+      <button id="search-button" class="styled blue" type="submit">Edit</button>
       </form>
-      <p id="edit-response"><br></p>`
+      <p id="response"><br></p>`
             }
           }).catch(error => {
             console.error("Error:", error)
           })
       }
+
+      function idk() {
       if (subtype == 432) {
       document.getElementById("search-button").disabled = true
          event.preventDefault()
@@ -565,7 +566,7 @@
            } else {
              document.getElementById("search-button").disabled = false
            }
-           document.getElementById("edit-response").innerHTML = data.result
+           document.getElementById("response").innerHTML = data.result
            
          }).catch(error => {
            console.error("Error:", error)
