@@ -9,6 +9,14 @@
     <script>
       let randomNumber = localStorage.getItem('randomNumber');
       let email = localStorage.getItem('email');
+      let snippetsFile = fetch("mpsnippets.html", {cache: "no-store"}).then(response => {
+          if (!response.ok) {
+            console.error("Failed to fetch content");
+            throw new Error("Failed to fetch content");
+          } else {
+            return response.text()
+          }
+        }).then(text => {snippetsFile = text})
       
       function primary() {      
         if ((!email) || (email == null)) {
@@ -64,21 +72,9 @@
       }
       
       function loadSnippet(elementId, targetId) {
-        var url = "mpsnippets.html"
-        fetch(url, {cache: "no-cache"}).then(response => {
-          if (!response.ok) {
-            console.error("Failed to fetch content");
-            throw new Error("Failed to fetch content");
-          } else {
-            return response.text()
-          }
-        }).then(text => {
-          let parser = new DOMParser()
-          let content = parser.parseFromString(text, "text/html").getElementById(elementId.toUpperCase())
-          document.getElementById(targetId).innerHTML = content.innerHTML
-        }).catch(error => {
-          console.error("Error loading snippet:", error)
-        })
+        let parser = new DOMParser()
+        let content = parser.parseFromString(snippetsFile, "text/html").getElementById(elementId.toUpperCase())
+        document.getElementById(targetId).innerHTML = content.innerHTML
       }
       
       function handleSentenceMenu(type) {
