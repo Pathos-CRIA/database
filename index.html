@@ -576,8 +576,9 @@
            } else {
              document.getElementById("search-button").disabled = false
            }
-           document.getElementById("response").innerHTML = data.result
-           
+           return data.result
+         }).then(result => {
+           document.getElementById("response").innerHTML = result
          }).catch(error => {
            console.error("Error:", error)
          })
