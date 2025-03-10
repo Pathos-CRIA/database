@@ -103,11 +103,11 @@ https://example.com/evidence-b" required></textarea><br><br><br>
     <label for="inputCaseId">Reference Number:</label><br><br>
     <input type="number" id="inputCaseId" name="inputCaseId" placeholder="321" required min="1" max="999"><br><br>
       
-    <button id="search-button" type="submit">Select</button>
+    <button id="search-button" class="styled blue" type="submit">Select</button>
   </form>
   <p id="response"></p>
   <br>
-  <button id="list-button" onclick="handleType4Form('', 433)" type="submit">List of Pending Cases</button>
+  <button id="list-button" onclick="listPendingActions()" type="submit">List of Pending Cases</button>
   <p id="list-response"></p>
   <p id="response2"></p>
 </div>
