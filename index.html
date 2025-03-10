@@ -582,7 +582,7 @@
            console.error("Error:", error)
          })
       }
-      function listPendingActions {        
+      function listPendingActions() {        
          document.getElementById("list-response").innerHTML = "Processing your request. This may take a few seconds..."
          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&type=433`, {
            method: 'POST'
