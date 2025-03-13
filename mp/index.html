@@ -9,7 +9,7 @@
     <script>
       let randomNumber = localStorage.getItem('randomNumber');
       let email = localStorage.getItem('email');
-      let snippetsFile = fetch("mpsnippets.html", {cache: "no-store"}).then(response => {
+      let snippetsFile = fetch("snippets.html", {cache: "no-store"}).then(response => {
           if (!response.ok) {
             console.error("Failed to fetch content");
             throw new Error("Failed to fetch content");
