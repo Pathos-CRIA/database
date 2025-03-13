@@ -44,7 +44,8 @@
                   if (parameter == undefined) {
                     document.getElementById('buttons').innerHTML = `<button class="styled green" onclick="loadSnippet('look-up', 'dashboard');" type="submit">Look-Up</button>
         <button class="styled green" onclick="loadSnippet('case-submit', 'dashboard');" type="submit">Action Submission</button>
-        <button class="styled green" onclick="loadSnippet('case-edit', 'dashboard');" type="submit">Action Review</button>`
+        <button class="styled green" onclick="loadSnippet('case-edit', 'dashboard');" type="submit">Action Review</button>
+        <button class="styled gray" style="margin-left:10px" onclick="location.href = 'https://pathos-cria.github.io/database/';" type="submit">Back</button>`
                   } else {
                       document.getElementById("dashboard").innerHTML = "Processing your request. This may take a few seconds..."
                       fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
@@ -685,6 +686,33 @@
       }
       button.yellow:active {
       background-color: #33330c;
+      }
+      button.red {
+      background-color: #b73333;
+      }
+      button.red:hover {
+      background-color: #7c2323;
+      }
+      button.red:active {
+      background-color: #5b1d1d;
+      }
+      button.orange {
+      background-color: #e67e22;
+      }
+      button.orange:hover {
+      background-color: #b55e19;
+      }
+      button.orange:active {
+      background-color: #8c4a14;
+      }
+      button.gray {
+      background-color: #666666;
+      }
+      button.gray:hover {
+      background-color: #4d4d4d;
+      }
+      button.gray:active {
+      background-color: #333333;
       }
       button:focus {
       outline: none;
