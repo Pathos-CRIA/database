@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Records and Information Administration</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+      let randomNumber = localStorage.getItem('randomNumber');
+      let email = localStorage.getItem('email');
+      let snippetsFile = fetch("snippets.html", {cache: "no-store"}).then(response => {
+          if (!response.ok) {
+            console.error("Failed to fetch content");
+            throw new Error("Failed to fetch content");
+          } else {
+            return response.text()
+          }
+        }).then(text => {snippetsFile = text})
+      
+      function primary() {      
+        if ((!email) || (email == null)) {
+          document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
+        } else {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?randomNumber=${randomNumber}&email=${encodeURIComponent(email)}&type=0`, {
+          method: 'POST',
+          headers: {
+            'Referer': window.location.origin, // Add Referer header to verify request origin
+          },
+        }).then(response => {
+          if (response.ok) {
+            return response.json(); // Parse JSON response
+          } else {
+            throw new Error('Failed to fetch response.');
+          }
+        }).then(data => {
+          var result = data.result; // Store the response in the variable
+          console.log(result)
+          if (result == "Failed") {
+                  document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
+                } else {
+                  document.getElementById('authorization-status').innerHTML = `You are signed in as ${email}. Use the button below to change your account.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
+                  var parameter = window.location.href.split("?")[1]
+                  if (parameter == undefined) {
+                    document.getElementById('buttons').innerHTML = `<button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/mp/';" type="submit">Military Police</button>
+        <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/ec/';" type="submit" disabled>Ethics Committee</button>
+        <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/iss/';" type="submit" disabled>Internal Security Service</button>
+        <button class="styled green" onclick="loadSnippet('admin', 'dashboard');" type="submit">Administration</button>`
+                  } else {
+                      document.getElementById("dashboard").innerHTML = "Processing your request. This may take a few seconds..."
+                      fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
+                        method: 'POST'
+                      }).then(response => {
+                        if (response.ok) {
+                          return response.json()
+                        } else {
+                          throw new Error ('Failed to fetch response.')
+                        }
+                      }).then(data => {
+                        var result = data.result; // Store the response in the variable
+                        document.getElementById('dashboard').innerHTML = result;
+                        console.log('Traffic Server Response: ', result);
+                      }).catch(error => {
+                        console.error("Error:", error)
+                      })
+                  }
+                }
+                return result; // Parse JSON response
+        }).catch(error => {
+          console.error('Error:', error);
+        });
+        }
+      }
+      
+      function loadSnippet(elementId, targetId) {
+        let parser = new DOMParser()
+        let content = parser.parseFromString(snippetsFile, "text/html").getElementById(elementId.toUpperCase())
+        document.getElementById(targetId).innerHTML = content.innerHTML
+      }
+      
+      function handleCredentialResponse(response) {
+        try {
+          // Decode JWT to get the user's email
+          const payload = JSON.parse(atob(response.credential.split('.')[1]));
+          email = payload.email;
+          randomNumber = Math.floor(100000000 + Math.random() * 900000000).toString(); // Generate random 9-digit number
+          localStorage.setItem('randomNumber', randomNumber); // Store it locally
+          localStorage.setItem('email', email);
+          // Send the email and random number to your endpoint
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?randomNumber=${randomNumber}&type=1&token=${encodeURIComponent(response.credential)}`, {
+            method: 'POST',
+          }).then(response => {
+            if (response.ok) {
+              console.log(response)
+              location.reload();
+              return response; // Parse JSON response
+            } else {
+              throw new Error('Failed to fetch response.');
+            }
+          }).catch(error => {
+            console.error('Error:', error);
+          });
+        } catch (error) {
+          console.error('Failed to parse credential response:', error);
+        }
+      }
+
+      function updateEmail(event) {
+        document.getElementById("search-button").disabled = true
+        event.preventDefault(); // Prevent default form submission
+        var username = document.getElementById('inputUsername').value; // Get username
+        var userEmail = document.getElementById('inputEmail').value; // Get assignment
+        if (!/^[A-Za-z0-9_]{3,21}$/.test(username)) {
+          document.getElementById("response").innerHTML = "The username is invalid."
+          document.getElementById("search-button").disabled = false
+          return true
+        }
+        console.log('Form Values: ', username, ' ', email);
+      // Add further processing logic here
+        document.getElementById('response').innerHTML = 'Processing your request. This may take a few seconds...';
+        fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&username=${encodeURIComponent(username)}&userEmail=${encodeURIComponent(userEmail)}&type=2`, {
+          method: 'POST',
+          headers: {
+            'Referer': window.location.origin, // Add Referer header to verify request origin
+          }
+        }).then(response => {
+          if (response.ok) {
+            return response.json(); // Parse JSON response
+          } else {
+            throw new Error('Failed to fetch response.');
+          } 
+        }).then(data => {
+          var result = data.result; // Store the response in the variable
+          document.getElementById('response').innerHTML = result;
+          document.getElementById("search-button").disabled = false
+          console.log('Email Assignment Server Response: ', result);
+        }).catch(error => {
+          console.error('Error:', error);
+        });
+    }
+    </script>
+    <style>
+      .highlight {
+      background-color: #bf9000;
+      }
+      .highlight-red {
+      background-color: #990000;
+      }
+      a {
+      color: #efefef;
+      }
+      body {
+      background-color: #1e2328;
+      color: #efefef;
+      font-family: calibri;
+      }
+      /* Style the search bar */
+      input, select, textarea {
+      width: 300px;
+      height: 30px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 5px 10px;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: calibri;
+      color: #333;
+      }
+      input:focus, select:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 2px 1px #337ab7;
+      }
+      input::placeholder, textarea::placeholder {
+      color: #999;
+      }
+      input[type=checkbox] {
+      height: 20px;
+      width: 20px;
+      vertical-align: middle;
+      margin-bottom: 6px;
+      }      
+      /* Style the search button */
+      button.compact {
+      border: none;
+      color: #fff;
+      font-family: calibri;
+      cursor: pointer;
+      }
+      button.styled {
+      border: none;
+      border-radius: 10px;
+      padding: 5px 10px;
+      line-height: 30px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: calibri;
+      cursor: pointer;
+      }
+      button.menu {
+      margin-top: 10px;
+      }
+      button.smaller {
+      line-height: 20px;
+      }
+      button.blue {
+      background-color: #337ab7;
+      }
+      button.blue:hover {
+      background-color: #23527c;
+      }
+      button.blue:active {
+      background-color: #1d3f5b;
+      }
+      button.green {
+      background-color: #33b779;
+      }
+      button.green:hover {
+      background-color: #237c52;
+      }
+      button.green:active {
+      background-color: #1d5b3f;
+      }
+      button.yellow {
+      background-color: #73731c;
+      }
+      button.yellow:hover {
+      background-color: #4d4d12;
+      }
+      button.yellow:active {
+      background-color: #33330c;
+      }
+      button:focus {
+      outline: none;
+      }
+      button:disabled {
+      background-color: #ccc;
+      color: #999;
+      cursor: not-allowed;
+      }
+      hr.rounded {
+      border-top: 8px solid #337ab7;
+      border-bottom: 1px solid #337ab7;
+      border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body onload="primary()">
+    <h4 style="margin-bottom:0px">Authorization</h4>
+    <p style="margin-top:5px" id="authorization-status">Loading...</p>
+    <div id="g_id_onload" data-client_id="843419690229-toasgn46imbm98g5ujb9a6eujdcojfnb.apps.googleusercontent.com" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
+    <div class="g_id_signin" data-type="standard"></div>
+    <hr class="rounded">
+    <div id="buttons">
+    </div>
+    <div id="dashboard">
+    </div>
+  </body>
+</html>
