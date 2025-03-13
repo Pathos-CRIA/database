@@ -42,10 +42,11 @@
                   document.getElementById('authorization-status').innerHTML = `You are signed in as ${email}. Use the button below to change your account.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
                   var parameter = window.location.href.split("?")[1]
                   if (parameter == undefined) {
-                    document.getElementById('buttons').innerHTML = `<button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/mp/';" type="submit">Military Police</button>
+                    document.getElementById('buttons').innerHTML = `<button class="styled red" onclick="loadSnippet('records', 'dashboard');" type="submit">Foundation Database</button>
+         <button class="styled orange" onclick="loadSnippet('admin', 'dashboard');" type="submit">Administration</button>
+        <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/mp/';" type="submit">Military Police</button>
         <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/ec/';" type="submit" disabled>Ethics Committee</button>
-        <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/iss/';" type="submit" disabled>Internal Security Service</button>
-        <button class="styled green" onclick="loadSnippet('admin', 'dashboard');" type="submit">Administration</button>`
+        <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/iss/';" type="submit" disabled>Internal Security Service</button>`
                   } else {
                       document.getElementById("dashboard").innerHTML = "Processing your request. This may take a few seconds..."
                       fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
@@ -229,6 +230,24 @@
       }
       button.yellow:active {
       background-color: #33330c;
+      }
+      button.red {
+      background-color: #b73333;
+      }
+      button.red:hover {
+      background-color: #7c2323;
+      }
+      button.red:active {
+      background-color: #5b1d1d;
+      }
+      button.orange {
+      background-color: #e67e22;
+      }
+      button.orange:hover {
+      background-color: #b55e19;
+      }
+      button.orange:active {
+      background-color: #8c4a14;
       }
       button:focus {
       outline: none;
