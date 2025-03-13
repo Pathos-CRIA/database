@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central Records and Information Administration</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
       let randomNumber = localStorage.getItem('randomNumber');
@@ -42,7 +42,7 @@
                   document.getElementById('authorization-status').innerHTML = `You are signed in as ${email}. Use the button below to change your account.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
                   var parameter = window.location.href.split("?")[1]
                   if (parameter == undefined) {
-                    document.getElementById('buttons').innerHTML = `<button class="styled red" onclick="loadSnippet('records', 'dashboard');" type="submit">Foundation Database</button>
+                    document.getElementById('buttons').innerHTML = `<button class="styled red" onclick="loadSnippet('records', 'dashboard');" type="submit" disabled>Foundation Database</button>
          <button class="styled orange" onclick="loadSnippet('admin', 'dashboard');" type="submit">Administration</button>
         <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/mp/';" type="submit">Military Police</button>
         <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/ec/';" type="submit" disabled>Ethics Committee</button>
