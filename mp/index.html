@@ -247,9 +247,9 @@
         document.getElementById("search-button").disabled = true
         event.preventDefault()
         var lookupType = document.getElementById("lookupType").value
-        var lookupInput = document.getElementById("inputQuery").value
       
         if (lookupType == "summary-lu") {
+          var lookupInput = document.getElementById("inputQuery").value
           if (!/^[A-Za-z0-9_]{3,21}$/.test(lookupInput)) {
             document.getElementById("response").innerHTML = "The username is invalid."
             document.getElementById("search-button").disabled = false
@@ -280,6 +280,7 @@
              console.error("Error:", error)
           })
         } else if (lookupType == "case-lu") {
+          var lookupInput = `${document.getElementById("inputQueryYear").value}-51-${document.getElementById("inputQueryId").value}`
           document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=412`, {
             method: 'POST'
@@ -298,6 +299,7 @@
             console.error("Error:", error)
           })
         } else if (lookupType == "user-records") {
+          var lookupInput = document.getElementById("inputQuery").value
           if (!/^[A-Za-z0-9_]{3,21}$/.test(lookupInput)) {
             document.getElementById("response").innerHTML = "The username is invalid."
         	  document.getElementById("search-button").disabled = false
@@ -396,7 +398,7 @@
         document.getElementById("search-button").disabled = true
         event.preventDefault()
         document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
-        var lookupInput = document.getElementById("inputCaseId").value
+        var lookupInput = `${document.getElementById("inputCaseYear").value}-51-${document.getElementById("inputCaseId").value}`
           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=431`, {
             method: 'POST'
           }).then(response => {
