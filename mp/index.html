@@ -153,7 +153,7 @@
               console.log(data)
               document.getElementById('dashboard').innerHTML = `      <h3 style="margin-bottom:0px;padding-bottom:0px">MP Traffic Dashboard: Action Review</h3><p style="font-size:10px;margin-top:1px;padding-top:0px;margin-bottom:15px">Case <span id="editingCaseRefId">${data.refId}</span>, submitted by ${data.submittedBy}</p>
       
-      <div id="edit-form" style="line-height:10px" onsubmit="submitEdit(event)">
+      <form id="edit-form" style="line-height:10px" onsubmit="submitEdit(event)">
       
       <label for="inputusername">Defendant's Username:</label><br><br>
       <input type="text" id="inputUsername" name="inputUsername" placeholder="Vasek_Stolba" required maxlength="20" value="${data.defendantUser}"><br><br><br>
