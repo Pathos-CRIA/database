@@ -25,8 +25,8 @@
 </div>
 
 <div id="CASE-LU">
-  <label for="inputQuery">Reference Number:</label><br><br>
-  <input type="number" id="inputQuery" name="inputQuery" placeholder="321" required min="1" max="999"><br><br>
+  <label for="inputQueryYear">Reference Number:</label><br><br>
+  <input type="number" id="inputQueryYear" name="inputQueryYear" style="width:35px;" placeholder="25" required min="1" max="99"> - 51 - <input type="number" style="width:60px;" id="inputQueryId" name="inputQueryId" placeholder="0321" required min="1" max="9999"><br><br>
 
   <button class="styled blue" id="search-button" type="submit">Submit</button>
 </div>
@@ -100,8 +100,8 @@ https://example.com/evidence-b" required></textarea><br><br><br>
 <div id="CASE-EDIT">
   <h3 style="margin-bottom:0px;padding-bottom:0px">MP Traffic Dashboard: Action Review</h3><p style="font-size:10px;margin-top:1px;padding-top:0px;margin-bottom:15px">Select the record you want to edit either by specifying the reference number or opening the List of Pending Cases.</p>
   <form id="preedit-form" style="line-height:10px" onsubmit="getInfoForEdit(event)">
-    <label for="inputCaseId">Reference Number:</label><br><br>
-    <input type="number" id="inputCaseId" name="inputCaseId" placeholder="321" required min="1" max="999"><br><br>
+    <label for="inputCaseYear">Reference Number:</label><br><br>
+    <input type="number" id="inputCaseYear" name="inputCaseYear" style="width:35px;" placeholder="25" required min="1" max="99"> - 51 - <input type="number" style="width:60px;" id="inputCaseId" name="inputCaseId" placeholder="0321" required min="1" max="9999"><br><br>
       
     <button id="search-button" class="styled blue" type="submit">Select</button>
   </form>
