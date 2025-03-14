@@ -280,7 +280,7 @@
              console.error("Error:", error)
           })
         } else if (lookupType == "case-lu") {
-          var lookupInput = `${document.getElementById("inputQueryYear").value}-51-${document.getElementById("inputQueryId").value}`
+          var lookupInput = `${document.getElementById("inputQueryYear").value}-51-${document.getElementById("inputQueryId").value.padStart(4,'0')}`
           document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=412`, {
             method: 'POST'
@@ -398,7 +398,7 @@
         document.getElementById("search-button").disabled = true
         event.preventDefault()
         document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
-        var lookupInput = `${document.getElementById("inputCaseYear").value}-51-${document.getElementById("inputCaseId").value}`
+        var lookupInput = `${document.getElementById("inputCaseYear").value}-51-${document.getElementById("inputCaseId").value.padStart(4,'0')}`
           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&randomNumber=${randomNumber}&caseId=${encodeURIComponent(lookupInput)}&type=431`, {
             method: 'POST'
           }).then(response => {
