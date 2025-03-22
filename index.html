@@ -20,7 +20,7 @@
       
       function primary() {      
         if ((!email) || (email == null)) {
-          document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You further agree to the <a href="https://pathos-cria.github.io/database/policy" target="_blank">Privacy Policy</a>.</span>`;
+          document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You further agree to the <a href="https://pathos-cria.github.io/database/terms-of-service" target="_blank">Privacy Policy</a> and <a href="https://pathos-cria.github.io/database/privacy-policy" target="_blank">Privacy Policy</a>.</span>`;
         } else {
           fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?randomNumber=${randomNumber}&email=${encodeURIComponent(email)}&type=0`, {
           method: 'POST',
@@ -37,9 +37,9 @@
           var result = data.result; // Store the response in the variable
           console.log(result)
           if (result == "Failed") {
-                  document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
+                  document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You further agree to the <a href="https://pathos-cria.github.io/database/terms-of-service" target="_blank">Privacy Policy</a> and <a href="https://pathos-cria.github.io/database/privacy-policy" target="_blank">Privacy Policy</a>.</span>`;
                 } else {
-                  document.getElementById('authorization-status').innerHTML = `You are signed in as ${email}. Use the button below to change your account.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You may view our Privacy Policy <a href="https://pathos-cria.github.io/database/policy" target="_blank">here</a>.</span>`;
+                  document.getElementById('authorization-status').innerHTML = `You are signed in as ${email}. Use the button below to change your account.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You further agree to the <a href="https://pathos-cria.github.io/database/terms-of-service" target="_blank">Privacy Policy</a> and <a href="https://pathos-cria.github.io/database/privacy-policy" target="_blank">Privacy Policy</a>.</span>`;
                   var parameter = window.location.href.split("?")[1]
                   if (parameter == undefined) {
                     document.getElementById('buttons').innerHTML = `<button class="styled red" onclick="loadSnippet('records', 'dashboard');" type="submit" disabled>Foundation Database</button>
