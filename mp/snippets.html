@@ -40,7 +40,7 @@
 
 <div id="CASE-SUBMIT">
   <h3 style="margin-bottom:15px">MP Traffic Dashboard: Action Submission</h3>
-  <form id="case-submit-form" style="line-height:10px" onsubmit="handleCaseSubmit(event)">
+  <div id="submit-form" style="line-height:10px">
     <label for="inputusername">Defendant's Username:</label><br><br>
     <input type="text" id="inputUsername" name="inputUsername" placeholder="Vasek_Stolba" required maxlength="20"><br><br><br>
     
@@ -92,8 +92,8 @@ https://example.com/evidence-b" required></textarea><br><br><br>
     <label for="notes">Notes:</label><br><br>
     <textarea style="height:60px" id="notes" name="notes" placeholder="(Optional) The offender was ordered not to drive..."></textarea><br><br>
     
-    <button id="search-button" class="styled blue" type="submit">Submit</button>
-  </form>
+    <button id="search-button" class="styled blue" onclick="submit(event)">Submit</button>
+  </div>
   <p id="response"></p>
 </div>
 
