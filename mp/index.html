@@ -386,7 +386,7 @@
         }).then(data => {
           document.getElementById("response").innerHTML = data.result
           if (data.result == "Your submission was successfully recorded in the traffic database.") {
-            document.getElementById("submit-form").reset()
+            document.getElementById("case-submit-form").reset()
           }
           document.getElementById("search-button").disabled = false
         }).catch(error => {
