@@ -336,6 +336,7 @@
       function handleCaseSubmit(event) {
         document.getElementById("search-button").disabled = true
         event.preventDefault()
+        event.stopImmediatePropagation()
         var i = 0
         var charges = ""
         while (i < 18) {
