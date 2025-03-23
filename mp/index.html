@@ -333,10 +333,9 @@
         }
       }
       
-      function handleCaseSubmit(event) {
+      function submit(event) {
         document.getElementById("search-button").disabled = true
         event.preventDefault()
-        event.stopImmediatePropagation()
         var i = 0
         var charges = ""
         while (i < 18) {
@@ -387,7 +386,7 @@
         }).then(data => {
           document.getElementById("response").innerHTML = data.result
           if (data.result == "Your submission was successfully recorded in the traffic database.") {
-            document.getElementById("case-submit-form").reset()
+            document.getElementById("submit-form").reset()
           }
           document.getElementById("search-button").disabled = false
         }).catch(error => {
