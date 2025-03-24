@@ -107,8 +107,18 @@
         }
       }
 
+      function agreeCheckbox(checked) {
+        let button = document.getElementById("verify-button")
+        if (checked) {
+          button.disabled = false
+        } else {
+          button.disabled = true
+        }
+      }
+
       function updateEmailv2() {
         document.getElementById("verify-button").disabled = true
+        document.getElementById("disclaimerAgree").disabled = true
         document.getElementById('verify-response').innerHTML = 'Preparing ROBLOX verification...';
         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&type=12`, {
           method: 'POST',
