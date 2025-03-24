@@ -43,7 +43,7 @@
                   var parameter = window.location.href.split("?")[1]
                   if (parameter == undefined) {
                     document.getElementById('buttons').innerHTML = `<button class="styled red" onclick="loadSnippet('records', 'dashboard');" type="submit" disabled>Foundation Database</button>
-         <button class="styled orange" onclick="loadSnippet('admin', 'dashboard');" type="submit">Administration</button>
+         <button class="styled orange" onclick="loadSnippet('admin', 'dashboard');" type="submit" disabled>Administration</button>
         <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/mp/';" type="submit">Military Police</button>
         <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/ec/';" type="submit" disabled>Ethics Committee</button>
         <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/iss/';" type="submit" disabled>Internal Security Service</button>
