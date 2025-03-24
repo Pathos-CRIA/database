@@ -22,7 +22,7 @@
         if ((!email) || (email == null)) {
           document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You further agree to the <a href="https://pathos-cria.github.io/database/terms-of-service" target="_blank">Terms of Service</a> and <a href="https://pathos-cria.github.io/database/privacy-policy" target="_blank">Privacy Policy</a>.</span>`;
         } else {
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?tempToken=${tempToken}&email=${encodeURIComponent(email)}&type=0`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?tempToken=${encodeURIComponent(tempToken)}&email=${encodeURIComponent(email)}&type=0`, {
           method: 'POST',
           headers: {
             'Referer': window.location.origin, // Add Referer header to verify request origin
@@ -48,7 +48,7 @@
         <button class="styled gray" style="margin-left:10px" onclick="location.href = 'https://pathos-cria.github.io/database/';" type="submit">Back</button>`
                   } else {
                       document.getElementById("dashboard").innerHTML = "Processing your request. This may take a few seconds..."
-                      fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
+                      fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
                         method: 'POST'
                       }).then(response => {
                         if (response.ok) {
@@ -97,7 +97,7 @@
           localStorage.setItem('tempToken', tempToken); // Store it locally
           localStorage.setItem('email', email);
           // Send the email and random number to your endpoint
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?tempToken=${tempToken}&type=1&token=${encodeURIComponent(response.credential)}`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?tempToken=${encodeURIComponent(tempToken)}&type=1&token=${encodeURIComponent(response.credential)}`, {
             method: 'POST',
           }).then(response => {
             if (response.ok) {
@@ -118,7 +118,7 @@
       function quickViewEdit(subtype, query) {
         if (subtype == "view") {
           document.getElementById("response2").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&caseId=${encodeURIComponent(query)}&type=412`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&caseId=${encodeURIComponent(query)}&type=412`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -137,7 +137,7 @@
         }
         if (subtype == "edit") {
         document.getElementById("response2").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&caseId=${encodeURIComponent(query)}&type=431`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&caseId=${encodeURIComponent(query)}&type=431`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -257,7 +257,7 @@
           }
            
           document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&username=${encodeURIComponent(lookupInput)}&type=411`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&username=${encodeURIComponent(lookupInput)}&type=411`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -282,7 +282,7 @@
         } else if (lookupType == "case-lu") {
           var lookupInput = `${document.getElementById("inputQueryYear").value}-51-${document.getElementById("inputQueryId").value.padStart(4,'0')}`
           document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&caseId=${encodeURIComponent(lookupInput)}&type=412`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&caseId=${encodeURIComponent(lookupInput)}&type=412`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -306,7 +306,7 @@
         	  return true
           }
           document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&username=${encodeURIComponent(lookupInput)}&type=413`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&username=${encodeURIComponent(lookupInput)}&type=413`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -375,7 +375,7 @@
           return true
         }
         document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
-        fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&type=42`, {
+        fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&type=42`, {
           method: 'POST'
         }).then(response => {
           if (response.ok) {
@@ -399,7 +399,7 @@
         event.preventDefault()
         document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
         var lookupInput = `${document.getElementById("inputCaseYear").value}-51-${document.getElementById("inputCaseId").value.padStart(4,'0')}`
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&caseId=${encodeURIComponent(lookupInput)}&type=431`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&caseId=${encodeURIComponent(lookupInput)}&type=431`, {
             method: 'POST'
           }).then(response => {
             if (response.ok) {
@@ -560,8 +560,8 @@
         }
          
          document.getElementById("response").innerHTML = "Processing your request. This may take a few seconds..."
-         console.log(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`)
-         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`, {
+         console.log(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`)
+         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&username=${encodeURIComponent(username)}&charges=${encodeURIComponent(charges)}&offSummary=${encodeURIComponent(offenseSummary)}&evidence=${encodeURIComponent(evidence)}&notes=${encodeURIComponent(notes)}&makeSupervisor=${encodeURIComponent(makeSupervisor)}&supervisorNotes=${encodeURIComponent(supervisorNotes)}&sentence=${encodeURIComponent(sentence)}&sentenceDuration=${encodeURIComponent(sentenceDuration)}&status=${encodeURIComponent(status)}&refId=${encodeURIComponent(refId)}&type=432`, {
            method: 'POST'
          }).then(response => {
            if (response.ok) {
@@ -582,7 +582,7 @@
       }
       function listPendingActions() {        
          document.getElementById("list-response").innerHTML = "Processing your request. This may take a few seconds..."
-         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&type=433`, {
+         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&type=433`, {
            method: 'POST'
          }).then(response => {
            if (response.ok) {
