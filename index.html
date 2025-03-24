@@ -22,7 +22,7 @@
         if ((!email) || (email == null)) {
           document.getElementById('authorization-status').innerHTML = `You are not signed in. Press the button below to sign in. Use the account you use for other Pathos purposes, such as documentation.<br><span style="font-size:11px;">By signing in, you consent to the use of local storage for session continuity. No cookies are used. You further agree to the <a href="https://pathos-cria.github.io/database/terms-of-service" target="_blank">Terms of Service</a> and <a href="https://pathos-cria.github.io/database/privacy-policy" target="_blank">Privacy Policy</a>.</span>`;
         } else {
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?tempToken=${tempToken}&email=${encodeURIComponent(email)}&type=0`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?tempToken=${encodeURIComponent(tempToken)}&email=${encodeURIComponent(email)}&type=0`, {
           method: 'POST',
           headers: {
             'Referer': window.location.origin, // Add Referer header to verify request origin
@@ -49,7 +49,7 @@
         <button class="styled green" onclick="location.href = 'https://pathos-cria.github.io/database/iss/';" type="submit" disabled>Internal Security Service</button>`
                   } else {
                       document.getElementById("dashboard").innerHTML = "Processing your request. This may take a few seconds..."
-                      fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
+                      fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&caseId=${encodeURIComponent(parameter)}&type=412P`, {
                         method: 'POST'
                       }).then(response => {
                         if (response.ok) {
@@ -88,7 +88,7 @@
           localStorage.setItem('tempToken', tempToken); // Store it locally
           localStorage.setItem('email', email);
           // Send the email and random number to your endpoint
-          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?tempToken=${tempToken}&type=1&token=${encodeURIComponent(response.credential)}`, {
+          fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?tempToken=${encodeURIComponent(tempToken)}&type=1&token=${encodeURIComponent(response.credential)}`, {
             method: 'POST',
           }).then(response => {
             if (response.ok) {
@@ -119,7 +119,7 @@
         console.log('Form Values: ', username, ' ', email);
       // Add further processing logic here
         document.getElementById('response').innerHTML = 'Processing your request. This may take a few seconds...';
-        fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${tempToken}&username=${encodeURIComponent(username)}&userEmail=${encodeURIComponent(userEmail)}&type=2`, {
+        fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&username=${encodeURIComponent(username)}&userEmail=${encodeURIComponent(userEmail)}&type=2`, {
           method: 'POST',
           headers: {
             'Referer': window.location.origin, // Add Referer header to verify request origin
