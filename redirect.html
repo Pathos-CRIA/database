@@ -8,7 +8,6 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>     
       function primary() {      
-        document.getElementById('authorization-status').innerHTML = ``;
         var code = window.location.href.split("?code=")[1]
         if (code == undefined) {
           window.location.href = 'https://pathos-cria.github.io/database'
