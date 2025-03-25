@@ -118,7 +118,7 @@
 
       function updateEmailv2() {
         document.getElementById("verify-button").disabled = true
-        document.getElementById("disclaimerAgree").disabled = true
+        try {document.getElementById("disclaimerAgree").disabled = true} catch (err) {console.log(err)}
         document.getElementById('verify-response').innerHTML = 'Preparing ROBLOX verification...';
         fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&type=12`, {
           method: 'POST',
@@ -329,7 +329,7 @@
     <p style="margin-top:5px" id="authorization-status">Loading...</p>
     <div id="g_id_onload" data-client_id="843419690229-toasgn46imbm98g5ujb9a6eujdcojfnb.apps.googleusercontent.com" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
     <div class="g_id_signin" data-type="standard"></div>
-    <button id="verify-button" class="styled red" onclick="updateEmailv2()" disabled>Verify with ROBLOX (in testing)</button>
+    <button id="verify-button" class="styled red" onclick="updateEmailv2()">Verify with ROBLOX (in testing)</button>
     <p id="verify-response"></p>
     <hr class="rounded">
     <div id="buttons">
