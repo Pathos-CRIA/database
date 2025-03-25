@@ -10,7 +10,7 @@
       function primary() {      
         document.getElementById('authorization-status').innerHTML = ``;
         var code = window.location.href.split("?code=")[1]
-        if (parameter == undefined) {
+        if (code == undefined) {
           window.location.href = 'https://pathos-cria.github.io/database'
         } else {
           document.getElementById("dashboard").innerHTML = "Processing your request. This may take a few seconds..."
