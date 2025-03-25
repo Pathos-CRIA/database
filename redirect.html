@@ -17,14 +17,13 @@
             body: JSON.stringify({ "code": code })
           }).then(response => {
             if (response.ok) {
-              return response.json()
+              return response
             } else {
               throw new Error ('Failed to fetch response.')
             }
           }).then(data => {
-            var result = data.result; // Store the response in the variable
-            document.getElementById('authorization-status').innerHTML = result;
-            console.log('ROBLOX Authorization Server Response: ', result);
+            document.getElementById('authorization-status').innerHTML = data;
+            console.log('ROBLOX Authorization Server Response: ', data);
           }).catch(error => {
             console.error("Error:", error)
           })
