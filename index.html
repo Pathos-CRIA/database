@@ -146,40 +146,6 @@
           console.error('Error:', error);
         });
       }
-      
-      function updateEmail(event) {
-        document.getElementById("search-button").disabled = true
-        event.preventDefault(); // Prevent default form submission
-        var username = document.getElementById('inputUsername').value; // Get username
-        var userEmail = document.getElementById('inputEmail').value; // Get assignment
-        if (!/^[A-Za-z0-9_]{3,21}$/.test(username)) {
-          document.getElementById("response").innerHTML = "The username is invalid."
-          document.getElementById("search-button").disabled = false
-          return true
-        }
-        console.log('Form Values: ', username, ' ', email);
-      // Add further processing logic here
-        document.getElementById('response').innerHTML = 'Processing your request. This may take a few seconds...';
-        fetch(`https://script.google.com/macros/s/AKfycbzd15-5tWbSQaJ7vTs2vLwn-JmUdtCuFxCXUDcZQRgelyCK18Nf-y0V-oi1GDwV-GjGNw/exec?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}&username=${encodeURIComponent(username)}&userEmail=${encodeURIComponent(userEmail)}&type=2`, {
-          method: 'POST',
-          headers: {
-            'Referer': window.location.origin, // Add Referer header to verify request origin
-          }
-        }).then(response => {
-          if (response.ok) {
-            return response.json(); // Parse JSON response
-          } else {
-            throw new Error('Failed to fetch response.');
-          } 
-        }).then(data => {
-          var result = data.result; // Store the response in the variable
-          document.getElementById('response').innerHTML = result;
-          document.getElementById("search-button").disabled = false
-          console.log('Email Assignment Server Response: ', result);
-        }).catch(error => {
-          console.error('Error:', error);
-        });
-    }
     </script>
     <style>
       .highlight {
